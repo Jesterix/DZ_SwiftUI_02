@@ -13,13 +13,13 @@ final class RecipesViewModel: ObservableObject {
     @Published private(set) var page: Int = 0
     @Published private(set) var isPageLoading: Bool = false
     
-    func loadPage()  {
+    func loadPage(with ingredient: String) {
         guard isPageLoading == false else {
             return
         }
         isPageLoading = true
         page += 1
-        RecipeAPI.getRecipe(i: "avocado,tomato", q: "salad", p: page) { response, error in
+        RecipeAPI.getRecipe(i: "tomato,\(ingredient)", q: "salad", p: page) { response, error in
             if let results = response?.results {
                 self.items.append(contentsOf: results)
             }
@@ -57,6 +57,7 @@ struct RecipeRow: View {
 
 struct RecipeListView: View {
     @EnvironmentObject var viewModel: RecipesViewModel
+    var ingredient: String
 
     var body: some View {
         NavigationView {
@@ -65,14 +66,14 @@ struct RecipeListView: View {
                     RecipeRow(item: item)
                     .onAppear() {
                         if self.viewModel.items.isLast(item) {
-                            self.viewModel.loadPage()
+                            self.viewModel.loadPage(with: self.ingredient)
                         }
                     }
                 }
             }
             .navigationBarTitle("Recipes")
             .onAppear() {
-                self.viewModel.loadPage()
+                self.viewModel.loadPage(with: self.ingredient)
             }
         }
     }

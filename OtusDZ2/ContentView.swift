@@ -32,7 +32,7 @@ struct ContentView: View {
 
             Text("Value: \(ingredientViewModel.items[selection])")
             Spacer()
-            RecipeListView()
+            RecipeListView(ingredient: ingredientViewModel.items[selection])
         }
     }
 }
