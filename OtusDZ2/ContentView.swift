@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var recipesViewModel: RecipesViewModel
+
     @State private var selection = 0
     var news = ["news", "contacts", "weather"]
 
@@ -23,8 +25,8 @@ struct ContentView: View {
 
             Text("Value: \(news[selection])")
             Spacer()
+            RecipeListView()
         }
-
     }
 }
 
