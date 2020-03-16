@@ -9,7 +9,6 @@
 import SwiftUI
 
 final class RecipesViewModel: ObservableObject {
-    
     @Published private(set) var items: [Recipe] = [Recipe]()
     @Published private(set) var page: Int = 0
     @Published private(set) var isPageLoading: Bool = false

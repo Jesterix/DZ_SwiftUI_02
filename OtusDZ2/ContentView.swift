@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-final class AdditionalIngredientListModel: ObservableObject {
+final class IngredientListModel: ObservableObject {
     @Published private(set) var items: [String] = ["avocado",
                                                    "cucumber",
                                                    "onions"]
@@ -16,7 +16,7 @@ final class AdditionalIngredientListModel: ObservableObject {
 
 struct ContentView: View {
     @EnvironmentObject var recipesViewModel: RecipesViewModel
-    @EnvironmentObject var viewModel: AdditionalIngredientListModel
+    @EnvironmentObject var ingredientViewModel: IngredientListModel
 
     @State private var selection = 0
 
@@ -24,13 +24,13 @@ struct ContentView: View {
         VStack{
             Text("Salad with tomato and")
             Picker(selection: $selection, label: Text("News") ) {
-                ForEach(0..<viewModel.items.count) { index in
-                    Text(self.viewModel.items[index]).tag(index)
+                ForEach(0..<ingredientViewModel.items.count) { index in
+                    Text(self.ingredientViewModel.items[index]).tag(index)
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
 
-            Text("Value: \(viewModel.items[selection])")
+            Text("Value: \(ingredientViewModel.items[selection])")
             Spacer()
             RecipeListView()
         }
