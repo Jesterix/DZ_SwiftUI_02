@@ -64,10 +64,13 @@ struct RecipeListView: View {
             List(viewModel.items) { item in
                 VStack(alignment: .leading) {
                     RecipeRow(item: item)
-                    .onAppear() {
-                        if self.viewModel.items.isLast(item) {
-                            self.viewModel.loadPage(with: self.ingredient)
-                        }
+                        .onAppear() {
+                            if self.viewModel.items.isLast(item) {
+                                self.viewModel.loadPage(with: self.ingredient)
+                            }
+                    }
+                    NavPushButton(destination: SecondView()) {
+                        Text("Learn more...")
                     }
                 }
             }

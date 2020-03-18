@@ -23,16 +23,13 @@ struct ContentView: View {
     var body: some View {
         VStack{
             Text("Salad with tomato and")
-            Picker(selection: $selection, label: Text("News") ) {
-                ForEach(0..<ingredientViewModel.items.count) { index in
-                    Text(self.ingredientViewModel.items[index]).tag(index)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
+            RecipeListPicker(title: "Recipes", ingredientViewModel: _ingredientViewModel, segmentIndex: $selection)
 
-            Text("Value: \(ingredientViewModel.items[selection])")
             Spacer()
-            RecipeListView(ingredient: ingredientViewModel.items[selection])
+
+            NavControllerView(transition: .custom(.scale)) {
+                RecipeListView(ingredient: self.ingredientViewModel.items[self.selection])
+            }
         }
     }
 }
@@ -40,5 +37,21 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct RecipeListPicker: View {
+    let title: String
+
+    @EnvironmentObject var ingredientViewModel: IngredientListModel
+    @Binding var segmentIndex: Int
+
+    var body: some View {
+        Picker(title, selection: $segmentIndex) {
+            ForEach(0..<ingredientViewModel.items.count) { index in
+                Text(self.ingredientViewModel.items[index]).tag(index)
+            }
+        }
+        .pickerStyle(SegmentedPickerStyle())
     }
 }
