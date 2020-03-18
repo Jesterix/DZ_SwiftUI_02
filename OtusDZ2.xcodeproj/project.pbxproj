@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		444A33BE24225360002F7F88 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444A33BD24225360002F7F88 /* NavController.swift */; };
+		444A33C024225382002F7F88 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444A33BF24225382002F7F88 /* CustomButton.swift */; };
+		444A33C3242253CD002F7F88 /* AnyTranstionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444A33C2242253CD002F7F88 /* AnyTranstionExt.swift */; };
+		444A33C52422558B002F7F88 /* AdditionalViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444A33C42422558B002F7F88 /* AdditionalViews.swift */; };
 		44A6F7DE241F5E39006D9597 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A6F7DD241F5E39006D9597 /* AppDelegate.swift */; };
 		44A6F7E0241F5E39006D9597 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A6F7DF241F5E39006D9597 /* SceneDelegate.swift */; };
 		44A6F7E2241F5E39006D9597 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A6F7E1241F5E39006D9597 /* ContentView.swift */; };
@@ -33,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		444A33BD24225360002F7F88 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		444A33BF24225382002F7F88 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		444A33C2242253CD002F7F88 /* AnyTranstionExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTranstionExt.swift; sourceTree = "<group>"; };
+		444A33C42422558B002F7F88 /* AdditionalViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalViews.swift; sourceTree = "<group>"; };
 		44A6F7DA241F5E39006D9597 /* OtusDZ2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OtusDZ2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A6F7DD241F5E39006D9597 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44A6F7DF241F5E39006D9597 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +79,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		444A33C124225387002F7F88 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				444A33BD24225360002F7F88 /* NavController.swift */,
+				444A33C2242253CD002F7F88 /* AnyTranstionExt.swift */,
+				444A33BF24225382002F7F88 /* CustomButton.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		44A6F7D1241F5E39006D9597 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +114,8 @@
 				44A6F7E1241F5E39006D9597 /* ContentView.swift */,
 				44A6F814241F70F0006D9597 /* Exts.swift */,
 				44A6F812241F6FBE006D9597 /* RecipeListView.swift */,
+				444A33C42422558B002F7F88 /* AdditionalViews.swift */,
+				444A33C124225387002F7F88 /* Navigation */,
 				44A6F7E3241F5E3E006D9597 /* Assets.xcassets */,
 				44A6F7E8241F5E3F006D9597 /* LaunchScreen.storyboard */,
 				44A6F7EB241F5E3F006D9597 /* Info.plist */,
@@ -229,15 +249,19 @@
 				44A6F813241F6FBE006D9597 /* RecipeListView.swift in Sources */,
 				44A6F805241F6EF8006D9597 /* RecipeAPI.swift in Sources */,
 				44A6F808241F6EF8006D9597 /* OpenISO8601DateFormatter.swift in Sources */,
+				444A33BE24225360002F7F88 /* NavController.swift in Sources */,
+				444A33C3242253CD002F7F88 /* AnyTranstionExt.swift in Sources */,
 				44A6F80B241F6EF8006D9597 /* RecipeList.swift in Sources */,
 				44A6F80E241F6EF8006D9597 /* JSONEncodingHelper.swift in Sources */,
 				44A6F80C241F6EF8006D9597 /* Extensions.swift in Sources */,
 				44A6F7E0241F5E39006D9597 /* SceneDelegate.swift in Sources */,
 				44A6F80F241F6EF8006D9597 /* Models.swift in Sources */,
+				444A33C52422558B002F7F88 /* AdditionalViews.swift in Sources */,
 				44A6F811241F6EF8006D9597 /* Configuration.swift in Sources */,
 				44A6F7E2241F5E39006D9597 /* ContentView.swift in Sources */,
 				44A6F815241F70F0006D9597 /* Exts.swift in Sources */,
 				44A6F810241F6EF8006D9597 /* SynchronizedDictionary.swift in Sources */,
+				444A33C024225382002F7F88 /* CustomButton.swift in Sources */,
 				44A6F804241F6EF8006D9597 /* URLSessionImplementations.swift in Sources */,
 				44A6F80D241F6EF8006D9597 /* JSONDataEncoding.swift in Sources */,
 				44A6F809241F6EF8006D9597 /* Recipe.swift in Sources */,
