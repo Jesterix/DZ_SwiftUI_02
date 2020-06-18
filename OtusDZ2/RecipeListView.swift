@@ -7,19 +7,35 @@
 //
 
 import SwiftUI
+import Combine
 
 final class RecipesViewModel: ObservableObject {
+    private var ingredientViewModel = IngredientListModel()
     @Published private(set) var items: [Recipe] = [Recipe]()
     @Published private(set) var page: Int = 0
     @Published private(set) var isPageLoading: Bool = false
-    
-    func loadPage(with ingredient: String) {
+    @Published var segmentIndex: Int = 0
+    private var currentIngredient: String = ""
+
+    private var disposables = Set<AnyCancellable>()
+
+    init() {
+        $segmentIndex
+            .sink { index in
+                self.items.removeAll()
+                self.currentIngredient = self.ingredientViewModel.items[index]
+                self.loadPage()
+            }
+            .store(in: &disposables)
+    }
+
+    func loadPage() {
         guard isPageLoading == false else {
             return
         }
         isPageLoading = true
         page += 1
-        RecipeAPI.getRecipe(i: "tomato,\(ingredient)", q: "salad", p: page) { response, error in
+        RecipeAPI.getRecipe(i: "tomato,\(currentIngredient)", q: "salad", p: page) { response, error in
             if let results = response?.results {
                 self.items.append(contentsOf: results)
             }
@@ -57,7 +73,6 @@ struct RecipeRow: View {
 
 struct RecipeListView: View {
     @EnvironmentObject var viewModel: RecipesViewModel
-    var ingredient: String
 
     var body: some View {
         NavigationView {
@@ -66,7 +81,7 @@ struct RecipeListView: View {
                     RecipeRow(item: item)
                         .onAppear() {
                             if self.viewModel.items.isLast(item) {
-                                self.viewModel.loadPage(with: self.ingredient)
+                                self.viewModel.loadPage()
                             }
                     }
                     NavPushButton(destination: SecondView()) {
@@ -76,7 +91,7 @@ struct RecipeListView: View {
             }
             .navigationBarTitle("Recipes")
             .onAppear() {
-                self.viewModel.loadPage(with: self.ingredient)
+                self.viewModel.loadPage()
             }
         }
     }

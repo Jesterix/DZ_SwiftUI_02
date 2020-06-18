@@ -18,17 +18,15 @@ struct ContentView: View {
     @EnvironmentObject var recipesViewModel: RecipesViewModel
     @EnvironmentObject var ingredientViewModel: IngredientListModel
 
-    @State private var selection = 0
-
     var body: some View {
         VStack{
             Text("Salad with tomato and")
-            RecipeListPicker(title: "Recipes", ingredientViewModel: _ingredientViewModel, segmentIndex: $selection)
+            RecipeListPicker(title: "Recipes", ingredientViewModel: _ingredientViewModel, segmentIndex: $recipesViewModel.segmentIndex)
 
             Spacer()
 
             NavControllerView(transition: .custom(.scale)) {
-                RecipeListView(ingredient: self.ingredientViewModel.items[self.selection])
+                RecipeListView()
             }
         }
     }
