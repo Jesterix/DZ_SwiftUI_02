@@ -9,9 +9,10 @@
 import SwiftUI
 
 final class IngredientListModel: ObservableObject {
-    @Published private(set) var items: [String] = ["avocado",
-                                                   "cucumber",
-                                                   "onions"]
+    @Published private(set) var items: [String] = [
+        "avocado",
+        "cucumber",
+        "onions"]
 }
 
 struct ContentView: View {
@@ -21,7 +22,10 @@ struct ContentView: View {
     var body: some View {
         VStack{
             Text("Salad with tomato and")
-            RecipeListPicker(title: "Recipes", ingredientViewModel: _ingredientViewModel, segmentIndex: $recipesViewModel.segmentIndex)
+            RecipeListPicker(
+                title: "Recipes",
+                ingredientViewModel: _ingredientViewModel,
+                segmentIndex: $recipesViewModel.segmentIndex)
 
             Spacer()
 

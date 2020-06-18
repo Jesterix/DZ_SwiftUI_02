@@ -35,7 +35,10 @@ final class RecipesViewModel: ObservableObject {
         }
         isPageLoading = true
         page += 1
-        RecipeAPI.getRecipe(i: "tomato,\(currentIngredient)", q: "salad", p: page) { response, error in
+        RecipeAPI.getRecipe(
+            i: "tomato,\(currentIngredient)",
+            q: "salad", p: page)
+        { response, error in
             if let results = response?.results {
                 self.items.append(contentsOf: results)
             }
