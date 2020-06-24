@@ -29,9 +29,9 @@ struct ContentView: View {
 
             Spacer()
 
-            NavControllerView(transition: .custom(.scale)) {
+//            NavControllerView(transition: .custom(.scale)) {
                 RecipeListView()
-            }
+//            }
         }
     }
 }

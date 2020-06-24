@@ -87,7 +87,8 @@ struct RecipeListView: View {
                                 self.viewModel.loadPage()
                             }
                     }
-                    NavPushButton(destination: SecondView()) {
+                    NavigationLink(destination: RecipeView(recipe: item))
+                    {
                         Text("Learn more...")
                     }
                 }
