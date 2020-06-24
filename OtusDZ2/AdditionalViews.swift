@@ -38,3 +38,31 @@ struct ThirdView: View {
         .background(Color.red)
     }
 }
+
+struct RecipeView: View {
+    var recipe: Recipe
+    var body: some View {
+            VStack(alignment: .center) {
+                Text (recipe.title ?? "no title")
+                    .multilineTextAlignment(.center)
+                NavigationLink(destination: IngredientsView(recipe: recipe))
+                {
+                    Text("Push for ingredients")
+                }
+                Spacer()
+            }
+            .navigationBarTitle("Recipe")
+    }
+}
+
+struct  IngredientsView: View {
+    var recipe: Recipe
+    var body: some View {
+        VStack {
+            Text (recipe.ingredients ?? "no ingredients")
+                .padding()
+            Spacer()
+        }
+    .navigationBarTitle("Ingredients")
+    }
+}
