@@ -26,12 +26,8 @@ struct ContentView: View {
                 title: "Recipes",
                 ingredientViewModel: _ingredientViewModel,
                 segmentIndex: $recipesViewModel.segmentIndex)
-
             Spacer()
-
-//            NavControllerView(transition: .custom(.scale)) {
-                RecipeListView()
-//            }
+            RecipeListView()
         }
     }
 }
